@@ -31,7 +31,6 @@ WORKDIR /var/www/html
 RUN (php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php \
     && php -r "unlink('composer-setup.php');"\
-    && php composer.phar config "http-basic.nova.laravel.com" ${NOVA_USERNAME} ${NOVA_PASSWORD}\
     && php composer.phar install --no-scripts --no-autoloader --no-progress)
 
 COPY app /var/www/html/app
